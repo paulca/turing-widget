@@ -1,3 +1,6 @@
+const title = document.createElement("h1");
+title.innerText = "Modular Widget";
+
 const nameLabel = document.createElement("label");
 nameLabel.innerText = "Name";
 
@@ -35,4 +38,4 @@ const commentsField = {
   input: commentsTextarea
 };
 
-export { submit, nameField, emailField, commentsField };
+export { title, submit, nameField, emailField, commentsField };
