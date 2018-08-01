@@ -1,5 +1,11 @@
 (function() {
   var form = document.createElement("form");
+
+  var title = document.createElement("h1");
+  title.innerText = "Simple Widget";
+
+  form.appendChild(title);
+
   var nameLabel = document.createElement("label");
   nameLabel.innerText = "Name";
 
