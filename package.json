@@ -6,7 +6,9 @@
   "main": "dist/main.js",
   "module": "src/index.js",
   "browser": "dist/main.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "jest",
     "build": "webpack",
@@ -15,10 +17,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.55",
+    "axios": "^0.18.0",
     "vue": "^2.5.16"
-  },
-  "peerDependencies": {
-    "axios": "^0.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.55",
@@ -27,7 +27,7 @@
     "babel-loader": "^8.0.0-beta.4",
     "babel-plugin-transform-runtime": "^6.23.0",
     "css-loader": "^1.0.0",
-    "sass-loader": "^7.0.3",
+    "mini-css-extract-plugin": "^0.4.1",
     "vue-loader": "^15.2.6",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.3",

@@ -1,5 +1,6 @@
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -13,23 +14,33 @@ module.exports = {
     filename: "[name].main.js",
     path: path.resolve(__dirname, "dist")
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
+  ],
   serve: {
     port: 53473
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: `styles/[name].css`
+    })
+  ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          { loader: "style-loader" },
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
               modules: true
             }
-          },
-          { loader: "sass-loader" }
+          }
         ]
       },
       {
