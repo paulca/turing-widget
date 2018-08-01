@@ -1,8 +1,10 @@
 <template>
   <div class="turing-widget">
-    <div v-if="id">
-      Thanks {{response.name}}, your id is {{id}}
-    </div>
+    <form v-if="id">
+      Thanks {{response.name}} for your comments
+      <blockquote>{{response.comments}}</blockquote>
+      Your id is {{id}}.
+    </form>
     <form @submit.prevent="submit" v-else>
       <label>
         Name
@@ -11,7 +13,7 @@
 
       <label>
         Email
-        <input v-model="response.email">
+        <input type="email" v-model="response.email">
       </label>
 
       <label>

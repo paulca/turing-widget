@@ -18,6 +18,7 @@
   emailLabel.innerText = "Email";
 
   var emailInput = document.createElement("input");
+  emailInput.type = "email";
   emailLabel.appendChild(emailInput);
 
   form.appendChild(emailLabel);
@@ -52,14 +53,22 @@
       body: JSON.stringify({ response: response, other: "something" })
     });
     const content = await rawResponse.json();
-    console.log(content);
-    form.remove();
+    while (form.firstChild) {
+      form.removeChild(form.firstChild);
+    }
     var response = document.createTextNode(
-      `Thanks ${content.response.name}. Your response has been saved with id ${
-        content.id
-      }.`
+      `Thanks ${content.response.name} for your comments.`
     );
-    element.appendChild(response);
+    var blockquote = document.createElement("blockquote");
+    blockquote.innerText = content.response.comments;
+
+    var idStatement = document.createTextNode(
+      `Your response has been saved with id ${content.id}`
+    );
+
+    form.appendChild(response);
+    form.appendChild(blockquote);
+    form.appendChild(idStatement);
   };
 
   var element;

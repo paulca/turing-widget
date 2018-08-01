@@ -18,12 +18,21 @@ export default function(form, nameInput, emailInput, commentsInput) {
       body: JSON.stringify({ response: response, other: "something" })
     });
     const content = await rawResponse.json();
-    form.remove();
     var response = document.createTextNode(
-      `Thanks ${content.response.name}. Your response has been saved with id ${
-        content.id
-      }.`
+      `Thanks ${content.response.name} for your comments.`
     );
-    getElement().appendChild(response);
+    var blockquote = document.createElement("blockquote");
+    blockquote.innerText = content.response.comments;
+
+    var idStatement = document.createTextNode(
+      `Your response has been saved with id ${content.id}`
+    );
+
+    while (form.firstChild) {
+      form.removeChild(form.firstChild);
+    }
+    form.appendChild(response);
+    form.appendChild(blockquote);
+    form.appendChild(idStatement);
   };
 }
