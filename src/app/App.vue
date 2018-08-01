@@ -1,26 +1,28 @@
 <template>
-  <div v-if="id">
-    Thanks {{response.name}}, your id is {{id}}
+  <div class="turing-widget">
+    <div v-if="id">
+      Thanks {{response.name}}, your id is {{id}}
+    </div>
+    <form @submit.prevent="submit" v-else>
+      <label>
+        Name
+        <input v-model="response.name">
+      </label>
+
+      <label>
+        Email
+        <input v-model="response.email">
+      </label>
+
+      <label>
+        Comments
+        <textarea v-model="response.comments"></textarea>
+      </label>
+
+      <input type="submit" value="Submit">
+
+    </form>
   </div>
-  <form @submit.prevent="submit" v-else>
-    <label>
-      Name
-      <input v-model="response.name">
-    </label>
-
-    <label>
-      Email
-      <input v-model="response.email">
-    </label>
-
-    <label>
-      Comments
-      <textarea v-model="response.comments"></textarea>
-    </label>
-
-    <input type="submit" value="Submit">
-
-  </form>
 </template>
 
 <script>
