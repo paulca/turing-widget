@@ -2,11 +2,14 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: {
+    modular: "./src/modular.js",
+    app: "./src/index.js"
+  },
   output: {
     library: "turingWidget",
     libraryTarget: "umd",
-    filename: "main.js",
+    filename: "[name].main.js",
     path: path.resolve(__dirname, "dist")
   },
   externals: {
