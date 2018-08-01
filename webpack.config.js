@@ -1,34 +1,48 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.js',
+  mode: "development",
+  entry: "./src/index.js",
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    library: "turingWidget",
+    libraryTarget: "umd",
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  externals: {
+    axios: {
+      commonjs: "axios",
+      commonjs2: "axios",
+      amd: "axios",
+      root: "axios"
+    }
+  },
+  serve: {
+    port: 53473
   },
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          { loader: 'style-loader' },
+          { loader: "style-loader" },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true
             }
           },
-          { loader: 'sass-loader' }
+          { loader: "sass-loader" }
         ]
       },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime']
+            presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-transform-runtime"]
           }
         }
       }

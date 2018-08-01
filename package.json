@@ -4,6 +4,15 @@
   "description": "a Sample widget for Turing fest",
   "private": true,
   "main": "dist/main.js",
+  "module": "src/index.js",
+  "browser": "dist/main.js",
+  "files": ["dist"],
+  "scripts": {
+    "test": "jest",
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "serve": "webpack-serve"
+  },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.55",
     "axios": "^0.18.0"
@@ -18,12 +27,7 @@
     "sass-loader": "^7.0.3",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
-  },
-  "scripts": {
-    "test": "jest",
-    "build": "webpack --config webpack.config.js",
-    "serve": "webpack-dev-server --config webpack.config.js"
+    "webpack-serve": "^2.0.2"
   },
   "repository": {
     "type": "git",
