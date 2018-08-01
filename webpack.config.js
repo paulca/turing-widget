@@ -1,10 +1,11 @@
 const path = require("path");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
   mode: "development",
   entry: {
     modular: "./src/modular.js",
-    app: "./src/index.js"
+    framework: "./src/index.js"
   },
   output: {
     library: "turingWidget",
@@ -12,17 +13,10 @@ module.exports = {
     filename: "[name].main.js",
     path: path.resolve(__dirname, "dist")
   },
-  externals: {
-    axios: {
-      commonjs: "axios",
-      commonjs2: "axios",
-      amd: "axios",
-      root: "axios"
-    }
-  },
   serve: {
     port: 53473
   },
+  plugins: [new VueLoaderPlugin()],
   module: {
     rules: [
       {
@@ -37,6 +31,11 @@ module.exports = {
           },
           { loader: "sass-loader" }
         ]
+      },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        exclude: /(node_modules|bower_components)/
       },
       {
         test: /\.js$/,
