@@ -1,12 +1,18 @@
 import Vue from "vue";
+import vueCustomElement from "vue-custom-element";
+
+Vue.use(vueCustomElement);
+
 import App from "./app/App.vue";
 import "../css/form.css";
 
-document.addEventListener("DOMContentLoaded", function() {
-  new Vue({
-    el: "#turing-widget-framework",
-    render: h => h(App)
-  });
-});
+Vue.customElement("turing-widget", App);
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   new Vue({
+//     el: "#turing-widget-framework",
+//     render: h => h(App)
+//   });
+// });
 
 export default {};
