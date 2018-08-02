@@ -6,6 +6,7 @@
       Your id is {{id}}.
     </form>
     <form @submit.prevent="submit" v-else>
+      <h1>Framework Widget</h1>
       <label>
         Name
         <input v-model="response.name">
